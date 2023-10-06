@@ -46,23 +46,28 @@ public class Main {
             
              switch(opc){
                     case 1:                        //Algoritmo en lenguaje JAVA Registrar
-                              System.out.println("Digite la cantidad de empleados a registrar");
+                    System.out.println("Digite la cantidad de empleados a registrar");
                     cantidad= scan.nextInt();
                                         
                       scan.nextLine();
-                     
-                    for (int i = 0; i < cantidad; i++) {
-                        scan.nextLine();
-                        System.out.println("Digite el nombre del empleado");
-                        nombre= scan.nextLine();
-                        System.out.println("Digite el codigo del empleado");
-                        codigo= scan.nextLine();
-                        System.out.println("Digite el año de ingreso del empleado");
-                        año_ingreso= scan.nextInt();
-                        Empleado objemEmpleado = new Empleado(nombre, codigo, año_ingreso);
-                        listaempleados.add(objemEmpleado);
-                        
-                    }
+                    
+                      if(cantidad>0){
+                            for (int i = 0; i < cantidad; i++) {
+                                scan.nextLine();
+                                System.out.println("Digite el nombre del empleado");
+                                nombre= scan.nextLine();
+                                System.out.println("Digite el codigo del empleado");
+                                codigo= scan.nextLine();
+                                System.out.println("Digite el año de ingreso del empleado");
+                                año_ingreso= scan.nextInt();
+                                Empleado objemEmpleado = new Empleado(nombre, codigo, año_ingreso);
+                                listaempleados.add(objemEmpleado);
+
+                            }
+                      }else
+                      {
+                          System.out.println("La cantidad de empleados es invalida");
+                      }
                      
                      
                      
