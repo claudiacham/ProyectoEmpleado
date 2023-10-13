@@ -28,11 +28,14 @@ public class Main {
         String id="";
         int opc=0;
         int bandera=0;
+        int Retorno=0;
         
         ArrayList <Empleado> listaempleados =new ArrayList<>();
         Empleado objempleado= new Empleado("Santiago", "12345", 1994);
         listaempleados.add(objempleado);
         Scanner scan= new Scanner(System.in);
+        
+        do{
         
         System.out.println("1. Registrar Empleado");
             System.out.println("2. Editar Empleado");
@@ -53,26 +56,60 @@ public class Main {
                     
                       if(cantidad>0){
                             for (int i = 0; i < cantidad; i++) {
+                               
                                 scan.nextLine();
                                 System.out.println("Digite el nombre del empleado");
                                 nombre= scan.nextLine();
+                                
+                                while(nombre.equals(""))
+                               {
+                                   
+                                System.out.println("Digite el nombre del empleado");
+                                nombre= scan.nextLine();
+                                Retorno=RetornarValor(nombre);
+                               }
+                                Retorno=RetornarValor(nombre);
+                                
+                                
+                                while(Retorno!=0 || nombre.equals(""))
+                                {
+                                    System.out.println("Digite el nombre del empleado");
+                                    nombre= scan.nextLine();
+                                    Retorno=RetornarValor(nombre);
+                                    
+                                }
                                 System.out.println("Digite el codigo del empleado");
                                 codigo= scan.nextLine();
+                                
+                                while(codigo.equals(""))
+                               {
+                                System.out.println("Digite el codigo del empleado");
+                                codigo= scan.nextLine();
+                               }
+                            
+                                
                                 System.out.println("Digite el año de ingreso del empleado");
                                 año_ingreso= scan.nextInt();
+                                
+                                while( ! (año_ingreso>1920 && año_ingreso<2023) )
+                                {
+                                    System.out.println("Digite el año de ingreso del empleado");
+                                    año_ingreso= scan.nextInt();
+                                }
+                                
                                 Empleado objemEmpleado = new Empleado(nombre, codigo, año_ingreso);
                                 listaempleados.add(objemEmpleado);
 
                             }
-                      }else
-                      {
-                          System.out.println("La cantidad de empleados es invalida");
-                      }
+                               }else
+                             {
+                             System.out.println("La cantidad de empleados es invalida");
+                              }
                      
                      
                      
                      
-                    break;
+                               break;
                     case 2:
                         //Algoritmo en lenguaje JAVA Editar
                         scan.nextLine();
@@ -165,8 +202,38 @@ public class Main {
             }
          
 
-         }
+         }while(opc!=6);
+        }
+    
+    
+       
+      
+    public static int RetornarValor(String nombre)
+            
+    {
+        //declarar  variables
+        int numero =0;
+        int letra =0;
+        char[] arreglochar= new char[nombre.length()];
+        for (int i = 0; i < nombre.length(); i++) {
+            boolean bandera=Character.isDigit(nombre.charAt(i));
+            
+            if(bandera)
+            {
+                System.out.println("es un numero"+nombre.charAt(i));
+                numero++;
+            }else
+            {
+                System.out.println("es una letra"+nombre.charAt(i));
+                letra++;
             }
+            
+        }
+    return numero;
+    }
+}
+            
 
+        
     
 
